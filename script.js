@@ -1,22 +1,3 @@
-// const form = document.querySelector("form");
-// const taskInput = document.querySelector("#task");
-// const taskList = document.querySelector("#task-list");
-
-// form.addEventListener("submit", addTask);
-
-// function addTask(e) {
-//     e.preventDefault();
-
-//     const task = taskInput.value;
-//     if (!task) return;
-
-//     const li = document.createElement("li");
-//     li.innerText = task;
-//     taskList.appendChild(li);
-
-//     taskInput.value = "";
-// }
-
 const form = document.querySelector("form");
 const taskInput = document.querySelector("#task");
 const taskList = document.querySelector("#task-list");
@@ -32,7 +13,7 @@ function addTask(e) {
 
     const li = document.createElement("li");
     li.innerText = task;
-    li.innerHTML += `<button class="delete-task">Delete</button><button class="edit-task">Edit</button>`;
+    li.innerHTML += `<button class="delete-task">Delete</button><button class="edit-task">Edit</button><button class="mark-done">Done</button>`;
     taskList.appendChild(li);
 
     taskInput.value = "";
@@ -48,7 +29,7 @@ function handleTaskAction(e) {
         const task = parent.firstChild.textContent;
         const newTask = prompt("Edit task", task);
         parent.firstChild.textContent = newTask;
-    } else if (parent.tagName === "LI") {
+    } else if (target.classList.contains("mark-done")) {
         parent.classList.toggle("completed");
     }
 }
